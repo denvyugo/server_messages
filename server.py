@@ -72,6 +72,7 @@ async def add_message(request):
                                    source=form.get("source"),
                                    body=form.get("body"))
         return web.json_response({'id': message.id})
+        # TODO: send message to broker
     except Exception as exp:
         return web.json_response({'error': str(exp)})
 
