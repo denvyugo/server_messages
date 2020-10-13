@@ -1,0 +1,19 @@
+version: '3.7'
+
+services:
+  db:
+    image: postgres:10.1-alpine
+    volumes:
+      - postres_data:/var/lib/postgresql/data/
+  web:
+    build: .
+    command: python ./server.py
+    volumes:
+      - .:/srv
+    ports:
+      - 8000:8000
+    depends_on:
+      - db
+
+volumes:
+  postres_data:
